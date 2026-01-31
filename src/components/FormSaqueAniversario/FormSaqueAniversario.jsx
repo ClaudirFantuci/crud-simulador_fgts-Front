@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import './FormSaqueAniversario.css'
+import React, { useState } from 'react';
+import './FormSaqueAniversario.css';
 
 const MESES = [
     { label: 'Janeiro', value: 1 },
@@ -12,16 +12,16 @@ const MESES = [
     { label: 'Agosto', value: 8 },
     { label: 'Setembro', value: 9 },
     { label: 'Outubro', value: 10 },
-    { label: 'November', value: 11 },
+    { label: 'Novembro', value: 11 },
     { label: 'Dezembro', value: 12 }
 ];
+
 const FormSaqueAniversario = ({ onSubmit }) => {
     const [dados, setDados] = useState({
         nome: '',
         saldoFgts: '',
         mesAniversario: ''
     });
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -36,38 +36,66 @@ const FormSaqueAniversario = ({ onSubmit }) => {
         }
         onSubmit(dados);
     };
-    return (
-        <div className='FormContainer'>
-            <form onSubmit={handleSubmit} className='FormSaque'>
-                <label>Nome</label>
-                <input type="text"
-                    name='nome'
-                    value={dados.nome}
-                    onChange={handleChange}
-                    placeholder='nome'
-                    required />
-                <label>Mês do seu aniversario</label>
-                <select
-                    name="mesAniversario"
-                    value={dados.mesAniversario}
-                    onChange={handleChange}
-                    required
-                >
-                    <option value="">Selecione</option>
-                    {MESES.map(mes => (
-                        <option key={mes.value} value={mes.value}>{mes.label}</option>
-                    ))}
-                </select>
-                <label>Saldo do FGTS</label>
-                <input type="number"
-                    name='saldoFgts'
-                    value={dados.saldoFgts}
-                    onChange={handleChange}
-                    placeholder='Saldo Total do FGTS'
-                    required />
-                <button type="submit">Calcular</button>
-            </form>
 
+    return (
+        <div className="formContainer">
+            <div className="form-card">
+                <div className="form-header">
+                    <h2>Calcule o Valor do seu Saque do FGTS</h2>
+                </div>
+
+                <form onSubmit={handleSubmit} className="FormSaque">
+                    <div className="formGroup">
+                        <label className="form-label">Nome</label>
+                        <input
+                            className="inputField"
+                            type="text"
+                            name="nome"
+                            value={dados.nome}
+                            onChange={handleChange}
+                            placeholder="Digite seu nome"
+                            required
+                        />
+                    </div>
+
+                    <div className="formGroup">
+                        <label className="form-label">Mês do seu aniversário</label>
+                        <select
+                            className="selectField"
+                            name="mesAniversario"
+                            value={dados.mesAniversario}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">Selecione o mês</option>
+                            {MESES.map(mes => (
+                                <option key={mes.value} value={mes.value}>
+                                    {mes.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div className="formGroup">
+                        <label className="form-label">Saldo do FGTS</label>
+                        <div className="input-wrapper">
+                            <input
+                                className="inputField"
+                                type="number"
+                                name="saldoFgts"
+                                value={dados.saldoFgts}
+                                onChange={handleChange}
+                                placeholder="0,00"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <button type="submit" className="buttonCalc">
+                        Calcular
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };
