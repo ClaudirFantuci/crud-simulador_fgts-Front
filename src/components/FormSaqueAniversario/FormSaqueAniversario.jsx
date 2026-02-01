@@ -33,6 +33,17 @@ const FormSaqueAniversario = ({ onSubmit }) => {
         loadList();
     }, []);
 
+    const handleExcluir = async (id) => {
+        try {
+            setLoading(true);
+            await SaqueAniversarioService.delete(id);
+            await loadList();
+        } catch (error) {
+            setErro(error.message)
+        } finally {
+            setLoading(false);
+        }
+    };
     const loadList = async () => {
         try {
             setLoading(true);
@@ -56,6 +67,7 @@ const FormSaqueAniversario = ({ onSubmit }) => {
             alert('Preencha todos os campos obrigatórios');
             return;
         }
+        console.log(data)
         setLoading(true);
         setErro(null);
 
@@ -79,7 +91,7 @@ const FormSaqueAniversario = ({ onSubmit }) => {
             await loadList();
 
         } catch (error) {
-            console.error("Erro ao calcular:", error)
+            console.error("Erro ao calcular:", error);
         } finally {
             setLoading(false);
         }
@@ -133,7 +145,7 @@ const FormSaqueAniversario = ({ onSubmit }) => {
                         <div className="input-wrapper">
                             <input
                                 className="inputField"
-                                type="number"
+                                type="text"
                                 name="saldoFgts"
                                 value={data.saldoFgts}
                                 onChange={handleChange}
@@ -159,7 +171,7 @@ const FormSaqueAniversario = ({ onSubmit }) => {
                     <p><strong>Mês:</strong> Saque disponível a partir do primeiro dia útil de {MESES.find(m => m.value === result.mesAniversario)?.label} por um período de 90 dias</p>
                 </div>
             )}
-            {loadedList && (
+            {loadedList && Object.keys(loadedList).length > 0 && (
                 <div className='simulation-list'>
                     <h2>Simulações anteriores</h2>
                     <div className='simulationGrid'>
@@ -170,14 +182,20 @@ const FormSaqueAniversario = ({ onSubmit }) => {
                                 <p><strong>Aliquota:</strong> {item.faixa * 100}%</p>
                                 <p><strong>Valor Disponível:</strong> R$ {item.valorDisponivel?.toFixed(2)}</p>
                                 <p><strong>Mês:</strong> Saque disponível a partir do primeiro dia útil de {MESES.find(m => m.value === item.mesAniversario)?.label} por um período de 90 dias</p>
+                                <div className='result-card-rigth'>
+                                    <button
+                                        className="btn-acao btn-excluir"
+                                        onClick={() => handleExcluir(item.id)}
+                                        title="Excluir"
+                                    >
+                                        Excluir
+                                    </button>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
-            )
-            }
-
-
+            )}
         </div>
     );
 };
