@@ -1,15 +1,16 @@
 import './App.css';
-import Home from './pages/Home/Home';
 import { Routes, Route } from 'react-router-dom';
+import FormSaqueAniversario from './pages/FormSaqueAniversario/FormSaqueAniversario';
+import ListaSimulacoes from './pages/ListaSimulacoes/ListaSimulacoes';
 
 function App() {
   return (
     <div className="App">
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<FormSaqueAniversario />} />
+          <Route path="/simulacoes" element={<ListaSimulacoes />} />
         </Routes>
-
       </main>
     </div>
   );

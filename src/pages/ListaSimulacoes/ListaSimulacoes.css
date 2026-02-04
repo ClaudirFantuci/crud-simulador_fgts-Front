@@ -1,0 +1,14 @@
+.simulation-list {
+    width: 100%;
+    max-width: 860px;
+}
+
+.simulation-list h2 {
+    margin-top: 20px;
+}
+
+.simulationGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}

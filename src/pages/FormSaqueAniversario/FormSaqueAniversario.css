@@ -34,12 +34,17 @@ h2 {
     margin: 0;
 }
 
-
 .form-label {
     color: #8b949e;
     font-size: 0.95rem;
     margin-bottom: 6px;
     display: block;
+}
+
+.form-buttons {
+    width: 100%;
+    justify-content: end;
+    display: flex;
 }
 
 .FormSaque {
@@ -75,7 +80,8 @@ h2 {
     box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
 }
 
-.buttonCalc {
+.buttonCalc,
+.buttonCancel {
     background: #238636;
     color: white;
     border: none;
@@ -84,31 +90,71 @@ h2 {
     font-size: 1.05rem;
     font-weight: 500;
     cursor: pointer;
-    margin-top: 12px;
+    margin: 12px;
     transition: ease;
 }
 
-.buttonCalc:hover {
+.buttonCalc:hover,
+.buttonCancel:hover {
     background: #2ea043;
 }
 
-
-
-
-
-.result-card {
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #e8f5e9;
-    border-radius: 8px;
-    border-top: 4px solid #4caf50;
-    width: 100%;
-    max-width: 860px;
+.editButton,
+.deleteButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
 }
 
-.simulation-list {
+.editButton {
+    background: #ff9800;
+    color: white;
+}
+
+.editButton:hover:not(:disabled) {
+    background: #f57c00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+}
+
+.deleteButton {
+    background: #f44336;
+    color: white;
+}
+
+.deleteButton:hover:not(:disabled) {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+}
+
+.editButton:disabled,
+.deleteButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.result-card {
+    margin: 4px auto;
+    padding: 10px;
+    background-color: #e8f5e9;
+    border-radius: 8px;
+    border-top: 5px solid #4caf50;
     width: 100%;
     max-width: 860px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+}
+
+.result-card-left {
+    flex: 1;
 }
 
 .result-card h3 {
@@ -119,4 +165,13 @@ h2 {
 .result-card p {
     margin: 8px 0;
     font-size: 16px;
+}
+
+.result-card-rigth {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
