@@ -66,11 +66,11 @@ crud-simulador_fgts-Front/
 ├── public/                          # Arquivos públicos
 ├── src/
 │   ├── components/                  # Componentes reutilizáveis
-│   │   ├── FormSaqueAniversario/
 │   │   └── navBar/
 │   │       ├── NavBar.jsx
 │   │       └── NavBar.css
 │   ├── pages/                       # Páginas da aplicação
+│   │   ├── FormSaqueAniversario/
 │   │   │   ├── FormSaqueAniversario.jsx
 │   │   │   └── FormSaqueAniversario.css
 │   │   └── ListaSimulacoes/
@@ -160,4 +160,5 @@ Este projeto está sob a licença MIT.
 - [Documentação React](https://react.dev/)
 - [Documentação React Router](https://reactrouter.com/)
 - [Documentação Axios](https://axios-http.com/)
+
 
