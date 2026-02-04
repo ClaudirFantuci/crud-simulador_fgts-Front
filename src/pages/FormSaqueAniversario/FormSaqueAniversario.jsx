@@ -20,9 +20,8 @@ const MESES = [
 ];
 
 
-const FormSaqueAniversario = ({ onSubmit }) => {
+const FormSaqueAniversario = () => {
     const location = useLocation();
-    const navigate = useNavigate();
 
     const [data, setData] = useState({
         id: null,
@@ -97,6 +96,7 @@ const FormSaqueAniversario = ({ onSubmit }) => {
         } catch (error) {
             console.error("Erro ao calcular:", error);
             setErro(error.message);
+            console.log(erro);
         } finally {
             setLoading(false);
         }

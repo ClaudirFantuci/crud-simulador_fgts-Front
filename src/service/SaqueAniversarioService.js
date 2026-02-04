@@ -25,5 +25,5 @@ class SaqueAniversarioService {
         return response.data;
     }
 }
-
-export default new SaqueAniversarioService();
+const saqueAniversarioService = new SaqueAniversarioService();
+export default saqueAniversarioService;
