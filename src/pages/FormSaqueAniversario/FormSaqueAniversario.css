@@ -99,44 +99,17 @@ h2 {
     background: #2ea043;
 }
 
-.editButton,
-.deleteButton {
-    padding: 10px 20px;
+.closeButton {
+    padding: 10px;
     border: none;
     border-radius: 6px;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 100px;
-}
-
-.editButton {
-    background: #ff9800;
-    color: white;
-}
-
-.editButton:hover:not(:disabled) {
-    background: #f57c00;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
-}
-
-.deleteButton {
+    min-width: 60px;
     background: #f44336;
     color: white;
-}
-
-.deleteButton:hover:not(:disabled) {
-    background: #d32f2f;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
-}
-
-.editButton:disabled,
-.deleteButton:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
 }
 
 .result-card {
@@ -174,4 +147,57 @@ h2 {
     position: absolute;
     top: 20px;
     right: 20px;
+}
+
+@media (max-width: 768px) {
+    .form-card {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .FormSaque {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .result-card {
+        max-width: 100%;
+        flex-direction: column;
+    }
+
+    .result-card-rigth {
+        position: static;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .result-card-rigth {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .formContainer {
+        padding: 10px;
+    }
+
+    .form-card {
+        padding: 15px;
+        flex-direction: column;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    .buttonCalc,
+    .buttonCancel {
+        padding: 10px;
+        font-size: 0.95rem;
+        margin: 8px;
+    }
 }

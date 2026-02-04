@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import SaqueAniversarioService from '../../service/SaqueAniversarioService';
 import NavBar from '../../components/navBar/NavBar';
 import "./ListaSimulacoes.css"
@@ -56,13 +57,21 @@ const ListaSimulacoes = () => {
         }
     };
 
+    // Função para formatar o valor numérico para o padrão de exibição com máscara
+    const formatarParaMascara = (valor) => {
+        // Converte o número para string com 2 casas decimais
+        const valorString = valor.toFixed(2);
+        // Substitui o ponto por vírgula e adiciona separador de milhares
+        return valorString.replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    };
+
     const handleEdit = (item) => {
         navigate('/', {
             state: {
                 editData: {
                     id: item.id,
                     nome: item.nome,
-                    saldoFgts: item.saldoFgts.toString(),
+                    saldoFgts: formatarParaMascara(item.saldoFgts), // Formata antes de enviar
                     mesAniversario: item.mesAniversario
                 }
             }
@@ -96,9 +105,9 @@ const ListaSimulacoes = () => {
                                 <div key={key} className='result-card'>
                                     <div className='result-card-left'>
                                         <p><strong>Nome:</strong> {item.nome}</p>
-                                        <p><strong>Saldo FGTS:</strong> R$ {item.saldoFgts?.toFixed(2)}</p>
-                                        <p><strong>Aliquota:</strong> {item.faixa * 100}%</p>
-                                        <p><strong>Valor Disponível:</strong> R$ {item.valorDisponivel?.toFixed(2)}</p>
+                                        <p><strong>Saldo FGTS:</strong> R$ {item.saldoFgts?.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.')}</p>
+                                        <p><strong>Aliquota:</strong> {(item.faixa * 100).toFixed(0)}%</p>
+                                        <p><strong>Valor Disponível:</strong> R$ {item.valorDisponivel?.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.')}</p>
                                         <p><strong>Mês:</strong> Saque disponível a partir do primeiro dia útil de {MESES.find(m => m.value === item.mesAniversario)?.label} por um período de 90 dias</p>
                                     </div>
                                     <div className='result-card-rigth'>
@@ -108,7 +117,7 @@ const ListaSimulacoes = () => {
                                             title="Editar"
                                             disabled={loading}
                                         >
-                                            Editar
+                                            <FaEdit />
                                         </button>
                                         <button
                                             className="deleteButton"
@@ -116,7 +125,7 @@ const ListaSimulacoes = () => {
                                             title="Excluir"
                                             disabled={loading}
                                         >
-                                            Excluir
+                                            <FaTrash />
                                         </button>
                                     </div>
                                 </div>

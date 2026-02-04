@@ -12,3 +12,43 @@
     flex-direction: column;
     gap: 1px;
 }
+
+.editButton,
+.deleteButton {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 60px;
+}
+
+.editButton {
+    background: #ff9800;
+    color: white;
+}
+
+.editButton:hover:not(:disabled) {
+    background: #f57c00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+}
+
+.deleteButton {
+    background: #f44336;
+    color: white;
+}
+
+.deleteButton:hover:not(:disabled) {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+}
+
+.editButton:disabled,
+.deleteButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
