@@ -52,10 +52,28 @@ const FormSaqueAniversario = () => {
         setIsEdit(false);
         setResult(null);
     };
+    const formatarMoeda = (valor) => {
+        const apenasNumeros = valor.replace(/\D/g, '');
+
+        const numeroFormatado = (Number(apenasNumeros) / 100).toFixed(2);
+
+        return numeroFormatado.replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    };
+
+    const converterParaNumero = (valorFormatado) => {
+        return parseFloat(valorFormatado.replace(/\./g, '').replace(',', '.'));
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setData(prev => ({ ...prev, [name]: value }));
+
+        if (name === 'saldoFgts') {
+
+            const valorFormatado = formatarMoeda(value);
+            setData(prev => ({ ...prev, [name]: valorFormatado }));
+        } else {
+            setData(prev => ({ ...prev, [name]: value }));
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -71,7 +89,7 @@ const FormSaqueAniversario = () => {
         try {
             const sendData = {
                 nome: data.nome,
-                saldoFgts: parseFloat(data.saldoFgts),
+                saldoFgts: converterParaNumero(data.saldoFgts),
                 mesAniversario: parseInt(data.mesAniversario)
             };
 
