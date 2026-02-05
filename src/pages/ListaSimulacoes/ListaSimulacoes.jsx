@@ -56,12 +56,8 @@ const ListaSimulacoes = () => {
             }
         }
     };
-
-    // Função para formatar o valor numérico para o padrão de exibição com máscara
     const formatarParaMascara = (valor) => {
-        // Converte o número para string com 2 casas decimais
         const valorString = valor.toFixed(2);
-        // Substitui o ponto por vírgula e adiciona separador de milhares
         return valorString.replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     };
 
@@ -71,7 +67,7 @@ const ListaSimulacoes = () => {
                 editData: {
                     id: item.id,
                     nome: item.nome,
-                    saldoFgts: formatarParaMascara(item.saldoFgts), // Formata antes de enviar
+                    saldoFgts: formatarParaMascara(item.saldoFgts),
                     mesAniversario: item.mesAniversario
                 }
             }
@@ -79,7 +75,7 @@ const ListaSimulacoes = () => {
     };
 
     if (loading && loadedList.length === 0) {
-        return <div className="formContainer"><p>Carregando...</p></div>;
+        return <div className="formContainer"><h2>Carregando...</h2></div>;
     }
 
     return (

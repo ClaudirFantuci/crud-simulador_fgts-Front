@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import './FormSaqueAniversario.css';
 import SaqueAniversarioService from '../../service/SaqueAniversarioService';
 import NavBar from '../../components/navBar/NavBar';
+import Swal from 'sweetalert2';
 
 const MESES = [
     { label: 'Janeiro', value: 1 },
@@ -68,24 +69,48 @@ const FormSaqueAniversario = () => {
         const { name, value } = e.target;
 
         if (name === 'saldoFgts') {
-
             const valorFormatado = formatarMoeda(value);
-            setData(prev => ({ ...prev, [name]: valorFormatado }));
+            const valorNumerico = converterParaNumero(valorFormatado);
+
+            if (valorNumerico <= 999999999.99) {
+                setData(prev => ({ ...prev, [name]: valorFormatado }));
+            }
         } else {
             setData(prev => ({ ...prev, [name]: value }));
         }
     };
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!data.mesAniversario || !data.nome || !data.saldoFgts) {
-            alert('Preencha todos os campos obrigatórios');
+        const valorFgts = converterParaNumero(data.saldoFgts);
+
+        if (!valorFgts || valorFgts <= 0) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Atenção',
+                text: 'O valor do saldo FGTS deve ser maior que R$ 0,00',
+                confirmButtonText: 'OK',
+                background: '#0d1117',
+                color: '#fff'
+            });
             return;
         }
-        console.log(data)
+        const mesAniversario = parseInt(data.mesAniversario);
+        if (!mesAniversario || mesAniversario < 1 || mesAniversario > 12) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Atenção',
+                text: 'Selecione um mês válido (1 a 12)',
+                confirmButtonText: 'OK',
+                background: '#0d1117',
+                color: '#fff'
+            });
+            return;
+        }
+
         setLoading(true);
         setErro(null);
-
         try {
             const sendData = {
                 nome: data.nome,
@@ -174,7 +199,7 @@ const FormSaqueAniversario = () => {
                                     name="saldoFgts"
                                     value={data.saldoFgts}
                                     onChange={handleChange}
-                                    placeholder="0,00"
+                                    placeholder="R$100,00"
                                     required
                                     disabled={loading}
                                 />

@@ -2,8 +2,19 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import FormSaqueAniversario from './pages/FormSaqueAniversario/FormSaqueAniversario';
 import ListaSimulacoes from './pages/ListaSimulacoes/ListaSimulacoes';
-
+import { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 function App() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const validRoutes = ['/', '/simulacoes'];
+    if (!validRoutes.includes(location.pathname)) {
+      navigate('/');
+    }
+  }, [location.pathname, navigate]);
+
   return (
     <div className="App">
       <main>
@@ -15,5 +26,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

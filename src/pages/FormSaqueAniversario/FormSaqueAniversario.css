@@ -165,7 +165,7 @@ h2 {
     }
 
     .result-card {
-        max-width: 100%;
+        max-width: 98%;
         flex-direction: column;
     }
 
@@ -173,9 +173,7 @@ h2 {
         position: static;
         margin-top: 15px;
     }
-}
 
-@media (max-width: 480px) {
     .result-card-rigth {
         display: flex;
         flex-direction: row;
