@@ -1,8 +1,13 @@
-# 💰 Simulador FGTS - Frontend
+# Simulador FGTS - Frontend
 
 Aplicação web React para simular o valor disponível para saque-aniversário do FGTS. Interface para calcular valores baseados no saldo FGTS e gerenciar simulações.
 
-## 📋 Sobre o Projeto
+## Aplicação em Produção (Deploy)
+
+Observação: como o projeto utiliza serviços gratuitos de hospedagem (Railway, Render e Netlify), o backend pode apresentar cold start. Nos testes realizados, a primeira requisição pode levar até 5 minutos para responder. Após esse período inicial, a aplicação funciona normalmente, sem impactos no desempenho. A versão completa da aplicação (Frontend integrado ao Backend) está disponível em produção:
+
+🔗 **https://fgtssimulator.netlify.app/**
+## Sobre o Projeto
 
 Sistema frontend desenvolvido em React.js que permite aos usuários:
 
@@ -13,7 +18,7 @@ Sistema frontend desenvolvido em React.js que permite aos usuários:
 - Visualizar lista de todas as simulações cadastradas
 - Calcular automaticamente a alíquota e valor disponível conforme faixa do saldo
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **React** 19.2.4
 - **React Router DOM** 7.13.0 - Navegação entre páginas
@@ -22,13 +27,13 @@ Sistema frontend desenvolvido em React.js que permite aos usuários:
 - **Testing Library** - Testes unitários
 - **Web Vitals** - Métricas de performance
 
-## 📦 Pré-requisitos
+## Pré-requisitos
 
 - [Node.js](https://nodejs.org/) versão 14 ou superior
 - [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 - Backend rodando em `http://localhost:8080`
 
-## 🔧 Instalação
+## Instalação
 
 ### 1. Clone o repositório
 
@@ -59,7 +64,7 @@ npm start
 
 A aplicação estará disponível em `http://localhost:3000`
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 crud-simulador_fgts-Front/
@@ -90,7 +95,7 @@ crud-simulador_fgts-Front/
 └── README.md
 ```
 
-## 🎯 Funcionalidades
+## Funcionalidades
 
 ### 1. Formulário de Simulação (`FormSaqueAniversario`)
 
@@ -113,7 +118,7 @@ Permite criar nova simulação ou editar simulação existente:
 - Valor disponível para saque
 - Período de saque disponível
 
-## 🔌 Integração com Backend
+## Integração com Backend
 
 ### Serviço: `SaqueAniversarioService`
 
@@ -150,7 +155,7 @@ delete(id)
 | @testing-library/react | 16.3.2 | Testes |
 
 
-## 📝 Licença
+## Licença
 
 Este projeto está sob a licença MIT.
 
@@ -160,5 +165,6 @@ Este projeto está sob a licença MIT.
 - [Documentação React](https://react.dev/)
 - [Documentação React Router](https://reactrouter.com/)
 - [Documentação Axios](https://axios-http.com/)
+
 
 
