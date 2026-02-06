@@ -2,7 +2,7 @@
 
 Aplicação web React para simular o valor disponível para saque-aniversário do FGTS. Interface para calcular valores baseados no saldo FGTS e gerenciar simulações.
 
-## Aplicação em Produção (Deploy)
+## Aplicação em Produção - (Deploy)
 
 Observação: como o projeto utiliza serviços gratuitos de hospedagem (Railway, Render e Netlify), o backend pode apresentar cold start. Nos testes realizados, a primeira requisição pode levar até 5 minutos para responder. Após esse período inicial, a aplicação funciona normalmente, sem impactos no desempenho. A versão completa da aplicação (Frontend integrado ao Backend) está disponível em produção:
 
@@ -165,6 +165,7 @@ Este projeto está sob a licença MIT.
 - [Documentação React](https://react.dev/)
 - [Documentação React Router](https://reactrouter.com/)
 - [Documentação Axios](https://axios-http.com/)
+
 
 
 
