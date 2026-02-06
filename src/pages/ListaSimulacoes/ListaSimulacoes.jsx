@@ -4,6 +4,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import SaqueAniversarioService from '../../service/SaqueAniversarioService';
 import NavBar from '../../components/navBar/NavBar';
 import "./ListaSimulacoes.css"
+import Swal from 'sweetalert2';
 
 const MESES = [
     { label: 'Janeiro', value: 1 },
@@ -44,7 +45,19 @@ const ListaSimulacoes = () => {
     };
 
     const handleExcluir = async (id) => {
-        if (window.confirm('Tem certeza que deseja excluir esta simulação?')) {
+        const result = await Swal.fire({
+            title: 'Confirmar exclusão',
+            text: 'Tem certeza que deseja excluir esta simulação?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, excluir',
+            cancelButtonText: 'Cancelar',
+            background: '#0d1117',
+            color: '#fff'
+        });
+
+        return;
+        if (result.isConfirmed) {
             try {
                 setLoading(true);
                 await SaqueAniversarioService.delete(id);
